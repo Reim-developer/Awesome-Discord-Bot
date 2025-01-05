@@ -3,7 +3,7 @@ import datetime
 from discord.ext import commands
 
 
-class Message(commands.Cog):
+class MessageDelete(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -29,4 +29,4 @@ class Message(commands.Cog):
 
 
 async def setup(bot) -> None:
-    await bot.add_cog(Message(bot))
+    await bot.add_cog(MessageDelete(bot))
