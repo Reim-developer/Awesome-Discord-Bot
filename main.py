@@ -11,9 +11,9 @@ with open("./config.json") as configFile:
     BOT_PREFIX = data["BOT_PREFIX"]
 
 COGS_LIST: list[str] = [
-    "cogs.ulti.userinfo"
+    "cogs.ulti.userinfo",
     "cogs.ulti.serverinfo",
-    "cogs.ulti.logging"
+    "cogs.logging.message"
 ]
 
 async def load_cogs() -> None:
