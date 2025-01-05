@@ -13,7 +13,8 @@ with open("./config.json") as configFile:
 COGS_LIST: list[str] = [
     "cogs.ulti.userinfo",
     "cogs.ulti.serverinfo",
-    "cogs.logging.message_delete"
+    "cogs.logging.message_delete",
+    "cogs.logging.message_edit"
 ]
 
 async def load_cogs() -> None:
