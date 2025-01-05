@@ -12,7 +12,8 @@ with open("./config.json") as configFile:
 
 COGS_LIST: list[str] = [
     "cogs.test",
-    "cogs.ulti.userinfo"
+    "cogs.ulti.userinfo",
+    "cogs.ulti.serverinfo"
 ]
 
 async def load_cogs() -> None:
@@ -21,7 +22,7 @@ async def load_cogs() -> None:
         await bot.load_extension(cog)
 
 bot = commands.Bot(
-    command_prefix = BOT_PREFIX, # Replace with your bot prefix
+    command_prefix = BOT_PREFIX,
     intents =  intents 
 )
 
