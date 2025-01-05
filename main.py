@@ -2,7 +2,7 @@ import discord
 import json
 from discord.ext import commands
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 intents.message_content = True
 
 with open("./config.json") as configFile:
@@ -13,9 +13,11 @@ with open("./config.json") as configFile:
 COGS_LIST: list[str] = [
     "cogs.ulti.userinfo",
     "cogs.ulti.serverinfo",
-    "cogs.logging.message_delete",
-    "cogs.logging.message_edit",
-    "cogs.logging.message_send"
+    "cogs.logging.message.message_delete",
+    "cogs.logging.message.message_edit",
+    "cogs.logging.message.message_send",
+    "cogs.logging.member.member_join",
+    "cogs.logging.member.member_left"
 ]
 
 async def load_cogs() -> None:
