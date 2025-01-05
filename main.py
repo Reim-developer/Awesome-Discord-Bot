@@ -14,7 +14,8 @@ COGS_LIST: list[str] = [
     "cogs.ulti.userinfo",
     "cogs.ulti.serverinfo",
     "cogs.logging.message_delete",
-    "cogs.logging.message_edit"
+    "cogs.logging.message_edit",
+    "cogs.logging.message_send"
 ]
 
 async def load_cogs() -> None:
