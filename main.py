@@ -11,8 +11,7 @@ with open("./config.json") as configFile:
     BOT_PREFIX = data["BOT_PREFIX"]
 
 COGS_LIST: list[str] = [
-    "cogs.test",
-    "cogs.ulti.userinfo",
+    "cogs.ulti.userinfo"
     "cogs.ulti.serverinfo",
     "cogs.ulti.logging"
 ]
