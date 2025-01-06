@@ -5,7 +5,7 @@ from discord.ext import commands
 intents = discord.Intents.all()
 intents.message_content = True
 
-with open("./config.json") as configFile:
+with open("./config/config.json") as configFile:
     data = json.load(configFile)
     BOT_TOKEN = data["TOKEN"]
     BOT_PREFIX = data["BOT_PREFIX"]
@@ -20,7 +20,8 @@ COGS_LIST: list[str] = [
     "cogs.logging.member.member_join",
     "cogs.logging.member.member_left",
     "cogs.logging.member.member_ban",
-    "cogs.logging.member.member_unban"
+    "cogs.logging.member.member_unban",
+    "cogs.moderator.purge_msg"
 ]
 
 async def load_cogs() -> None:
