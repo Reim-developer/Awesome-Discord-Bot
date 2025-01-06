@@ -9,7 +9,7 @@ class MemberBan(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_ban(self, guild: discord.Guild, user: discord.User) -> None:
-        LOG_CHANNEL_ID = 1047035958857564170 # WARNING:
+        LOG_CHANNEL_ID = 1047035958857564170 # WARNING: Replace with your actual log channel
 
         BAN_REASON = await guild.fetch_ban(user)
         
