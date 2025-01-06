@@ -19,7 +19,8 @@ class MemberBan(commands.Cog):
                 f"* **Username:** {user.name}\n" +\
                 f"* **Bị cấm vào lúc:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
                 f"* **Lí do cấm:** {BAN_REASON.reason}"
-            )
+            ),
+            color = 0x212121
         )
         await guild.get_channel(LOG_CHANNEL_ID).send(embed = embed)
 
