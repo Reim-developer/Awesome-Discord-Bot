@@ -21,7 +21,8 @@ COGS_LIST: list[str] = [
     "cogs.logging.member.member_left",
     "cogs.logging.member.member_ban",
     "cogs.logging.member.member_unban",
-    "cogs.moderator.purge_msg"
+    "cogs.moderator.purge_msg",
+    "cogs.moderator.set_nick"
 ]
 
 async def load_cogs() -> None:
