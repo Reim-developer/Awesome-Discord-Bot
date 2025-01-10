@@ -1,7 +1,10 @@
 import discord
 import datetime
 from discord.ext import commands
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 class MessageDelete(commands.Cog):
     def __init__(self, bot):
@@ -10,7 +13,7 @@ class MessageDelete(commands.Cog):
     # WARNING: Make sure message_content is enable
     @commands.Cog.listener()
     async def on_message_delete(self, message: discord.Message):
-        LOG_CHANNEL_ID = 1047035958857564170 # WARNING: REPLACE WITH YOUR LOG CHANNEL ID
+        LOG_CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 
         embed = discord.Embed(
             title = "Tin nhắn vừa bị xóa",

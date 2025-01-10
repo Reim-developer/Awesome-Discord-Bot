@@ -1,7 +1,10 @@
 import discord
 import datetime
 from discord.ext import commands
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 class MessageEdit(commands.Cog):
     def __init__(self, bot):
@@ -11,7 +14,7 @@ class MessageEdit(commands.Cog):
     # WARNING: Make sure message_content intent is enable
     @commands.Cog.listener()
     async def on_message_edit(self, before_msg: discord.Message, after_msg: discord.Message) -> None:
-        LOG_CHANNEL_ID = 1047035958857564170 # WARNING: Replace with your log channel
+        LOG_CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 
         if before_msg.author.bot: # Ignore all message from bot
             return

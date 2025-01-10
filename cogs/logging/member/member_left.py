@@ -1,7 +1,10 @@
 import discord
 import datetime
 from discord.ext import commands
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 class MemberLeft(commands.Cog):
     def __init__(self, bot) -> None:
@@ -9,7 +12,7 @@ class MemberLeft(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member) -> None:
-        LOG_CHANNEL_ID = 1047035958857564170
+        LOG_CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 
         embed = discord.Embed(
             title = "Vừa có một thành viên vừa rời khỏi server",

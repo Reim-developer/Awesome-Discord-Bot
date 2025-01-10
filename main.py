@@ -1,14 +1,16 @@
 import discord
 import json
 from discord.ext import commands
+from dotenv import load_dotenv
+import os
 
 intents = discord.Intents.all()
 intents.message_content = True
 
-with open("./config/config.json") as configFile:
-    data = json.load(configFile)
-    BOT_TOKEN = data["TOKEN"]
-    BOT_PREFIX = data["BOT_PREFIX"]
+load_dotenv()
+
+BOT_TOKEN = os.getenv("TOKEN")
+BOT_PREFIX = os.getenv("BOT_PREFIX")
 
 COGS_LIST: list[str] = [
     "cogs.ulti.userinfo",
