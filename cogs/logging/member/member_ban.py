@@ -1,6 +1,10 @@
 import discord
 import datetime
 from discord.ext import commands
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 class MemberBan(commands.Cog):
@@ -9,7 +13,7 @@ class MemberBan(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_ban(self, guild: discord.Guild, user: discord.User) -> None:
-        LOG_CHANNEL_ID = 1047035958857564170 # WARNING: Replace with your actual log channel
+        LOG_CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 
         BAN_REASON = await guild.fetch_ban(user)
         

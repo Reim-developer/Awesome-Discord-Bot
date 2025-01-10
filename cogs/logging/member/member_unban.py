@@ -1,6 +1,10 @@
 import discord
 import datetime
 from discord.ext import commands
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 class MemberUnban(commands.Cog):
     def __init__(self, bot) -> None:
@@ -8,7 +12,7 @@ class MemberUnban(commands.Cog):
     
     @commands.Cog.listener()
     async def on_member_unban(self, guild: discord.Guild, user: discord.User) -> None:
-        LOG_CHANNEL_ID = 1047035958857564170
+        LOG_CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 
         embed = discord.Embed(
             title = "Một người dùng vừa được gỡ lệnh cấm khỏi server",
