@@ -1,3 +1,11 @@
+r"""
+        AWESOME DISCORD BOT
+        This project is licensed under GPL-3.0 License
+        https://www.gnu.org/licenses/gpl-3.0.html
+        Contribution:
+            - Reim-developer
+"""
+
 import discord
 import datetime
 from discord.ext import commands
@@ -11,18 +19,18 @@ class Serverinfo(commands.Cog):
     @commands.command()
     async def serverinfo(self, ctx: commands.Context) -> None:
         embed = discord.Embed(
-            title = f"Thông tin về server {ctx.guild.name}",
+            title = f"Server Information: {ctx.guild.name}",
             description = (
-                f"* **Tên server:** {ctx.guild.name}\n" +\
-                f"* **ID server: ** `{ctx.guild.id}`\n" +\
-                f"* **Ngày tạo server:** `{ctx.guild.created_at.strftime('%d:%m:%Y')}`\n" +\
-                f"* **Số boost hiện tại:** `{ctx.guild.premium_subscription_count}` **boost**\n" +\
-                f"* **Server owner:** <@{ctx.guild.owner_id}> | `{ctx.guild.owner_id}`\n" +\
-                f"* **Số danh mục:** `{len(ctx.guild.categories)}` **danh mục**\n" +\
-                f"* **Số kênh văn bản:** `{len(ctx.guild.text_channels)}` **kênh**\n" +\
-                f"* **Số kênh voice:** `{len(ctx.guild.voice_channels)}` **kênh**\n" +\
-                f"* **Số emoji:** `{len(ctx.guild.emojis)}` **emoji**\n" +\
-                f"* **Số sticker:** `{len(ctx.guild.stickers)}` **sticker**" 
+                f"* **Server Name:** {ctx.guild.name}\n" +\
+                f"* **Server ID:** `{ctx.guild.id}`\n" +\
+                f"* **Created At:** `{ctx.guild.created_at.strftime('%d:%m:%Y')}`\n" +\
+                f"* **Current Boosts:** `{ctx.guild.premium_subscription_count}` **boosts**\n" +\
+                f"* **Server Owner:** <@{ctx.guild.owner_id}> | `{ctx.guild.owner_id}`\n" +\
+                f"* **Categories:** `{len(ctx.guild.categories)}` **categories**\n" +\
+                f"* **Text Channels:** `{len(ctx.guild.text_channels)}` **channels**\n" +\
+                f"* **Voice Channels:** `{len(ctx.guild.voice_channels)}` **channels**\n" +\
+                f"* **Emojis:** `{len(ctx.guild.emojis)}` **emojis**\n" +\
+                f"* **Stickers:** `{len(ctx.guild.stickers)}` **stickers**" 
              ),
              timestamp = datetime.datetime.now(),
              color = 0x696969
