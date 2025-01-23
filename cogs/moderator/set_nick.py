@@ -45,7 +45,7 @@ class SetNick(commands.Cog):
                 ephemeral = True
             )
             return
-        
+
         await member.edit(nick = nickname)
         await interaction.response.send_message(f"Changed {member.mention}'s nickname to {nickname}")
 
