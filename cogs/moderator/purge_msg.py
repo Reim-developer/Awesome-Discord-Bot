@@ -1,51 +1,40 @@
+r"""
+        AWESOME DISCORD BOT
+        This project is licensed under GPL-3.0 License
+        https://www.gnu.org/licenses/gpl-3.0.html
+        Contribution:
+            - Reim-developer
+"""
 import discord
-import json
-import datetime
-import os
 from discord.ext import commands
+from discord import app_commands
+from discord.app_commands import Range
 
 class PurgeMsg(commands.Cog):
     def __init__(self, bot) -> None:
         self.bot = bot
     
-    # require user has permission: manage_messages
-    @commands.command()
-    @commands.has_permissions(manage_messages = True)
-    async def purge(self, ctx: commands.Context, count: int = None):
-        if not ctx.guild:
-            return # Ignore if user try use command in DM
-
-        config_path = os.path.join(
-            os.path.dirname(__file__),
-            "..", "..", "config", "config.json"
-        )
-        with open(config_path) as configFile:
-            data = json.load(configFile)
-            BOT_PREFIX = data["BOT_PREFIX"]
-
-        if count is None:
-            embed = discord.Embed(
-                description = (
-                    "* **Vui lòng đề cập số lượng tin nhắn bạn muốn xóa!**\n" +\
-                    f"`{BOT_PREFIX}purge <Số lượng tin nhắn bạn muốn xóa>`"
-                ),
-                colour = 0x212121,
-                timestamp = datetime.datetime.now()
-            )
-            await ctx.channel.send(embed = embed)
+    @app_commands.command(
+        name = "purge",
+        description = "Purge messages in the channel"
+    )
+    @app_commands.describe(
+        count = "The number of messages to purge (2-100)"
+    )
+    @app_commands.default_permissions(manage_messages = True)
+    async def purge(
+        self, interaction: discord.Interaction, 
+        count: Range[int, 2, 100]) -> None:
+        if not interaction.guild:
             return
-        
-        msgDeleteCount = await ctx.channel.purge(
-            limit = count,
-            reason = f"Thực hiện bởi {ctx.author.name}"
-        )
 
-        embed = discord.Embed(
-            description = f"* **Xóa `{len(msgDeleteCount)}` tin nhắn thành công**",
-            color = 0x212121,
-            timestamp = datetime.datetime.now()
+        await interaction.response.defer()
+        await interaction.channel.purge(limit = count + 1)
+
+        await interaction.channel.send(
+            f"Successfully deleted `{count}` messages",
+            delete_after = 2
         )
-        await ctx.channel.send(embed = embed)
 
 async def setup(bot) -> None:
     await bot.add_cog(PurgeMsg(bot))
