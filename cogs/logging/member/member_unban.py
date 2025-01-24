@@ -11,11 +11,11 @@ class MemberUnban(commands.Cog):
         LOG_CHANNEL_ID = 1047035958857564170
 
         embed = discord.Embed(
-            title = "Một người dùng vừa được gỡ lệnh cấm khỏi server",
+            title = "A user has been unbanned from the server",
             description = (
                 f"* **Username:** {user.name}\n" +\
                 f"* **ID:** `{user.id}`\n" +\
-                f"* **Gỡ lệnh cấm vào:** <t:{int(datetime.datetime.now().timestamp())}>"
+                f"* **Unbanned at:** <t:{int(datetime.datetime.now().timestamp())}>"
             ),
             color = 0x212121,
             timestamp = datetime.datetime.now()
