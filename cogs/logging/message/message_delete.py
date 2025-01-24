@@ -13,11 +13,11 @@ class MessageDelete(commands.Cog):
         LOG_CHANNEL_ID = 1047035958857564170 # WARNING: REPLACE WITH YOUR LOG CHANNEL ID
 
         embed = discord.Embed(
-            title = "Tin nhắn vừa bị xóa",
+            title = "A message has just been deleted",
             description = (
-                f"* **Nội dung tin nhắn:** {message.content}\n" +\
-                f"* **Xóa vào lúc:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
-                f"* **Người gửi:** {message.author} | `{message.author.id}`"
+                f"* **Message content:** {message.content}\n" +\
+                f"* **Deleted at:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
+                f"* **Sender:** {message.author} | `{message.author.id}`"
             ),
             color = 0x212121,
             timestamp = datetime.datetime.now()
