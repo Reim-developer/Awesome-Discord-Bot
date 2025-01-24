@@ -20,6 +20,7 @@ with open("./config/config.json") as configFile:
 COGS_LIST: list[str] = [
     "cogs.ulti.userinfo",
     "cogs.ulti.serverinfo",
+    "cogs.ulti.avatar",
     "cogs.logging.message.message_delete",
     "cogs.logging.message.message_edit",
     "cogs.logging.message.message_send",
