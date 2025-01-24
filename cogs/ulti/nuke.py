@@ -14,7 +14,6 @@ class Nuke(commands.Cog):
         channel = "The channel to nuke"
     )
     @app_commands.default_permissions(manage_channels = True)
-    @app_commands.BotMissingPermissions(manage_channels = True)
     async def nuke(
         self,
         interaction: discord.Interaction,
