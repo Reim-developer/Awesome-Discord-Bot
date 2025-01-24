@@ -35,7 +35,7 @@ class Banner(commands.Cog):
         embed = discord.Embed(
             title = f"Banner of {interaction.guild.name}",
             description = f"[Download {interaction.guild.name}'s banner]({interaction.guild.banner.url})",
-            color = 0x696969
+            color = 0x2f3136
         )
         embed.set_image(url = interaction.guild.banner.url)
         await interaction.followup.send(embed = embed)
