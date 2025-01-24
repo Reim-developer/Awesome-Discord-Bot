@@ -1,46 +1,67 @@
+r""""
+        AWESOME DISCORD BOT
+        This project is licensed under GPL-3.0 License
+        https://www.gnu.org/licenses/gpl-3.0.html
+        Contribution:
+            - Reim-developer
+"""
+
 import discord
 import datetime
 from discord.ext import commands
-
+from discord import app_commands
 
 class Userinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def userinfo(self, ctx: commands.Context, user: discord.Member = None) -> None:
-        if user is None:
-            embed = discord.Embed(
-            title = f"Thông tin về {ctx.author.name}",
-            description = (
-                f"* **Tên người dùng:** {ctx.author.name}\n" +\
-                f"* **ID:** `{ctx.author.id}`\n" +\
-                f"* **Ngày tạo tài khoản:** `{ctx.author.created_at.strftime('%d:%m:%Y')}`\n" +\
-                f"* **Avatar:** [Tải xuống]({ctx.author.avatar.url})"
-            ),
-            colour = 0x696969,
-            timestamp = datetime.datetime.now()
-        )
-            embed.set_thumbnail(url = ctx.author.avatar.url)
-
-            await ctx.channel.send(embed = embed)
+    @app_commands.command(
+        name = "userinfo",
+        description = "Get user information"
+    )
+    @app_commands.describe(
+        user = "The user to get information"
+    )
+    async def userinfo(
+        self, 
+        interaction: discord.Interaction, 
+        user: discord.User = None) -> None:
+        if not interaction.guild:
             return
+        
+        if user is None:
+            await interaction.response.defer()
+            embed = discord.Embed(
+                title = "User Information",
+                description = (
+                    f"**Mention:** {interaction.user.mention}\n" +
+                    f"**Display Name:** {interaction.user.name}\n" +
+                    f"**ID:** `{interaction.user.id}`\n" +
+                    f"**Created At:** <t:{int(interaction.user.created_at.timestamp())}>"
+                ),
+                color = 0x2f3136
+            )
+            if interaction.user.avatar is not None:
+                embed.set_thumbnail(url = interaction.user.avatar.url)
 
+            await interaction.followup.send(embed = embed)
+            return
+        
+        await interaction.response.defer()
         embed = discord.Embed(
-            title = f"Thông tin về {user.name}",
+            title = "User Information",
             description = (
-                f"* **Tên người dùng:** {user.name}\n" +\
-                f"* **ID:** `{user.id}`\n" +\
-                f"* **Ngày tạo tài khoản:** `{user.created_at.strftime('%d:%m:%Y')}`\n" +\
-                f"* **Avatar:** [Tải xuống]({user.avatar.url})"
+                f"**Mention:** {user.mention}\n" +
+                f"**Display Name:** {user.name}\n" +
+                f"**ID:** `{user.id}`\n" +
+                f"**Created At:** <t:{int(user.created_at.timestamp())}>"
             ),
-            colour = 0x696969,
-            timestamp = datetime.datetime.now()
+            color = 0x2f3136
         )
-        embed.set_thumbnail(url = user.avatar.url)
+        if user.avatar is not None:
+            embed.set_thumbnail(url = user.avatar.url)
 
-        await ctx.channel.send(embed = embed)
-
+        await interaction.followup.send(embed = embed)
 
 async def setup(bot):
     await bot.add_cog(Userinfo(bot))
