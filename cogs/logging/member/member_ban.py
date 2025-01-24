@@ -17,20 +17,20 @@ class MemberBan(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_ban(self, guild: discord.Guild, user: discord.User) -> None:
-        LOG_CHANNEL_ID = 1047035958857564170 # WARNING: Replace with your actual log channel
+        log_channel_id = 1047035958857564170 # WARNING: Replace with your actual log channel
 
-        BAN_REASON = await guild.fetch_ban(user)
+        ban_reason = await guild.fetch_ban(user)
         
         embed = discord.Embed(
             title = "A user has been banned from the server",
             description = (
-                f"* **Username:** {user.name}\n" +\
-                f"* **Banned at:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
-                f"* **Ban reason:** {BAN_REASON.reason}"
+                f"* **Username:** {user.name}\n" +
+                f"* **Banned at:** <t:{int(datetime.datetime.now().timestamp())}>\n" +
+                f"* **Ban reason:** {ban_reason.reason}"
             ),
             color = 0x212121
         )
-        await guild.get_channel(LOG_CHANNEL_ID).send(embed = embed)
+        await guild.get_channel(log_channel_id).send(embed = embed)
 
 async def setup(bot) -> None:
     await bot.add_cog(MemberBan(bot))
