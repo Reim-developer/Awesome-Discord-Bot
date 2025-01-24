@@ -1,3 +1,11 @@
+r""""
+        AWESOME DISCORD BOT
+        This project is licensed under GPL-3.0 License
+        https://www.gnu.org/licenses/gpl-3.0.html
+        Contribution:
+            - Reim-developer
+"""
+
 import discord
 import datetime
 from discord.ext import commands
