@@ -1,3 +1,11 @@
+r"""
+        AWESOME DISCORD BOT
+        This project is licensed under GPL-3.0 License
+        https://www.gnu.org/licenses/gpl-3.0.html
+        Contribution:
+            - Reim-developer
+"""
+
 import discord
 import datetime
 from discord.ext import commands
@@ -14,11 +22,11 @@ class MemberBan(commands.Cog):
         BAN_REASON = await guild.fetch_ban(user)
         
         embed = discord.Embed(
-            title = "Một người dùng vừa bị cấm khỏi server",
+            title = "A user has been banned from the server",
             description = (
                 f"* **Username:** {user.name}\n" +\
-                f"* **Bị cấm vào lúc:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
-                f"* **Lí do cấm:** {BAN_REASON.reason}"
+                f"* **Banned at:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
+                f"* **Ban reason:** {BAN_REASON.reason}"
             ),
             color = 0x212121
         )
