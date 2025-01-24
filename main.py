@@ -17,17 +17,18 @@ with open("./config/config.json") as configFile:
     BOT_TOKEN = data["TOKEN"]
     BOT_PREFIX = data["BOT_PREFIX"]
 
+
+# "cogs.logging.message.message_delete",
+# "cogs.logging.message.message_edit",
+# "cogs.logging.message.message_send",
+# "cogs.logging.member.member_join",
+# "cogs.logging.member.member_left",
+# "cogs.logging.member.member_ban",
+# "cogs.logging.member.member_unban",
 COGS_LIST: list[str] = [
     "cogs.ulti.userinfo",
     "cogs.ulti.serverinfo",
     "cogs.ulti.avatar",
-    # "cogs.logging.message.message_delete",
-    # "cogs.logging.message.message_edit",
-    # "cogs.logging.message.message_send",
-    # "cogs.logging.member.member_join",
-    # "cogs.logging.member.member_left",
-    # "cogs.logging.member.member_ban",
-    # "cogs.logging.member.member_unban",
     "cogs.moderator.purge_msg",
     "cogs.moderator.set_nick"
 ]
