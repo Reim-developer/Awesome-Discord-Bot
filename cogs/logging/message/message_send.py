@@ -17,11 +17,11 @@ class MessageSend(commands.Cog):
             return 
         
         embed = discord.Embed(
-            title = "Một tin nhắn vừa được gửi đi",
+            title = "A message has just been sent",
             description = (
-                f"* **Nội dung tin nhắn:** {message.content}\n" +\
-                f"* **Gửi vào lúc:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
-                f"* **Người gửi:** {message.author} | `{message.author.id}`"
+                f"* **Message content:** {message.content}\n" +\
+                f"* **Sent at:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
+                f"* **Sender:** {message.author} | `{message.author.id}`"
             ),
             colour = 0x212121,
             timestamp = datetime.datetime.now() 
