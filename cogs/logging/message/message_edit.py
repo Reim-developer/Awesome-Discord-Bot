@@ -17,12 +17,12 @@ class MessageEdit(commands.Cog):
             return
         
         embed = discord.Embed(
-            title = "Tin nhắn vừa được chỉnh sửa",
+            title = "Message has been edited",
             description = (
-                f"* **Nội dung ban đầu:** {before_msg.content}\n" +\
-                f"* **Nội dung sau khi chỉnh sửa:** {after_msg.content}\n" +\
-                f"* **Chỉnh sửa vào lúc:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
-                f"* **Người gửi:** {before_msg.author} | `{before_msg.author.id}`"
+                f"* **Original content:** {before_msg.content}\n" +\
+                f"* **Content after editing:** {after_msg.content}\n" +\
+                f"* **Edited at:** <t:{int(datetime.datetime.now().timestamp())}>\n" +\
+                f"* **Sender:** {before_msg.author} | `{before_msg.author.id}`"
             ),
             timestamp = datetime.datetime.now(),
             colour = 0x212121
