@@ -32,6 +32,7 @@ COGS_LIST: list[str] = [
     "cogs.ulti.nuke",
     "cogs.ulti.banner",
     "cogs.ulti.roleinfo",
+    "cogs.ulti.userBanner",
     "cogs.moderator.purge_msg",
     "cogs.moderator.set_nick"
 ]
