@@ -1,2 +1,2 @@
 discord.py
-requests
+pynacl # For voice channl & music.
